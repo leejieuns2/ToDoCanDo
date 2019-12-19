@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/searchToDoBtn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30sp"
+        android:layout_marginBottom="30sp"
+        android:fontFamily="@font/typo_dodam"
+        android:text="ToDoCanDo"
+        android:textSize="20sp" />
+
+    <ListView
+        android:id="@+id/lvToDo"
+        android:layout_width="match_parent"
+        android:fontFamily="@font/typo_dodam"
+        android:layout_height="wrap_content"></ListView>
+
+</LinearLayout>

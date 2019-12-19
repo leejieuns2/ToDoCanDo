@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/searchToDoBtn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30sp"
+        android:layout_marginBottom="30sp"
+        android:fontFamily="@font/typo_dodam"
+        android:text="SEARCH TODO FOR DATE"
+        android:textSize="20sp" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:minDate="01/01/2019"
+        android:maxDate="12/31/2030"
+        android:focusedMonthDateColor="#ff0000"
+        android:unfocusedMonthDateColor="#0000ff"
+        android:selectedWeekBackgroundColor="#ffff00"
+        android:showWeekNumber="false"
+        android:weekSeparatorLineColor="#00ff00" />
+
+    <ListView
+        android:id="@+id/lvSearchToDo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/typo_dodam"
+        android:onClick="onClick"
+        android:text="CLOSE"
+        android:textSize="18sp" />
+
+</LinearLayout>
