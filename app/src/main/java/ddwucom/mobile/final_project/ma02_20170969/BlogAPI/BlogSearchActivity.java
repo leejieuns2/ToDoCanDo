@@ -1,4 +1,4 @@
-package ddwucom.mobile.final_project.ma02_20170969;
+package ddwucom.mobile.final_project.ma02_20170969.BlogAPI;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -27,6 +27,8 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
+
+import ddwucom.mobile.final_project.ma02_20170969.R;
 
 public class BlogSearchActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package ddwucom.mobile.final_project.ma02_20170969;
+package ddwucom.mobile.final_project.ma02_20170969.ToDo;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+
+import ddwucom.mobile.final_project.ma02_20170969.R;
+import ddwucom.mobile.final_project.ma02_20170969.ToDo.ToDoDBHelper;
 
 public class CustomCursorAdapter extends CursorAdapter {
 

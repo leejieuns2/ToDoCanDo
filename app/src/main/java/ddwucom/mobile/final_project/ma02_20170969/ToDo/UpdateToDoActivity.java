@@ -1,4 +1,4 @@
-package ddwucom.mobile.final_project.ma02_20170969;
+package ddwucom.mobile.final_project.ma02_20170969.ToDo;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -12,7 +12,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class UpdateActivity extends AppCompatActivity {
+import ddwucom.mobile.final_project.ma02_20170969.BlogAPI.BlogSearchActivity;
+import ddwucom.mobile.final_project.ma02_20170969.R;
+import ddwucom.mobile.final_project.ma02_20170969.ToDo.ToDoDBHelper;
+
+public class UpdateToDoActivity extends AppCompatActivity {
 
     final static String TAG = "ToDoDBHelper";
     final static int BLOG_LINK_CODE = 100;

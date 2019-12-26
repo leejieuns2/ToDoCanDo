@@ -3,12 +3,13 @@
 // 학번: 20170969 성명: 이지은
 // 제출일: 2019년 9월 26일
 
-package ddwucom.mobile.final_project.ma02_20170969;
+package ddwucom.mobile.final_project.ma02_20170969.ToDo;
 
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,10 +17,15 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import ddwucom.mobile.final_project.ma02_20170969.BlogAPI.BlogSearchActivity;
+import ddwucom.mobile.final_project.ma02_20170969.R;
+import ddwucom.mobile.final_project.ma02_20170969.SearchMapActivity;
+
 public class InsertToDoActivity extends AppCompatActivity {
 
-	public static final String TAG = "BlogLinkAdapter";
+	public static final String TAG = "InsertToDoActivity";
 	final static int BLOG_LINK_CODE = 100;
+	final static int MAP_LINK_CODE = 200;
 	ToDoDBHelper helper;
 	EditText etTodoDate;
 	EditText ettodoTime;
@@ -89,9 +95,14 @@ public class InsertToDoActivity extends AppCompatActivity {
 					Toast.makeText(this, "저장 실패", Toast.LENGTH_SHORT).show();
 				}
 				break;
+			case R.id.btnSLActivity:
+				Intent mapIntent = new Intent(this, SearchMapActivity.class);
+				startActivityForResult(mapIntent, MAP_LINK_CODE);
+				Log.d(TAG, "SearchMapActivity start!");
+				break;
 			case R.id.btnSBActivity:
-				Intent intent = new Intent(this, BlogSearchActivity.class);
-				startActivityForResult(intent, BLOG_LINK_CODE);
+				Intent blogIntent = new Intent(this, BlogSearchActivity.class);
+				startActivityForResult(blogIntent, BLOG_LINK_CODE);
 				break;
 			case R.id.btnNewToDoClose:
 				finish();
@@ -107,6 +118,13 @@ public class InsertToDoActivity extends AppCompatActivity {
 					String resultData = data.getStringExtra("result_data");
 					Toast.makeText(this, "Search Success !", Toast.LENGTH_SHORT).show();
 					etLink.setText(resultData);
+				}
+				break;
+			case MAP_LINK_CODE:
+				if(resultCode == RESULT_OK) {
+					String resultData = data.getStringExtra("result_data");
+					Toast.makeText(this, "Search Success !", Toast.LENGTH_SHORT).show();
+					etLocation.setText(resultData);
 				}
 				break;
 		}

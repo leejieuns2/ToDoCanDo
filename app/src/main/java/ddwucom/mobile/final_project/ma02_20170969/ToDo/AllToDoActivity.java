@@ -1,4 +1,4 @@
-package ddwucom.mobile.final_project.ma02_20170969;
+package ddwucom.mobile.final_project.ma02_20170969.ToDo;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import ddwucom.mobile.final_project.ma02_20170969.R;
 
 public class AllToDoActivity extends AppCompatActivity {
 
@@ -39,7 +41,7 @@ public class AllToDoActivity extends AppCompatActivity {
 		lvToDo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Intent intent = new Intent(AllToDoActivity.this, UpdateActivity.class);
+				Intent intent = new Intent(AllToDoActivity.this, UpdateToDoActivity.class);
 				intent.putExtra("id", id);
 				startActivity(intent);
 			}

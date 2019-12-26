@@ -1,10 +1,12 @@
-package ddwucom.mobile.final_project.ma02_20170969;
+package ddwucom.mobile.final_project.ma02_20170969.BlogAPI;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.StringReader;
 import java.util.ArrayList;
+
+import ddwucom.mobile.final_project.ma02_20170969.BlogAPI.NaverBlogDto;
 
 /**
  * Created by cooling

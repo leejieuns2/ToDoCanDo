@@ -3,5 +3,6 @@
     <string name="api_url">https://openapi.naver.com/v1/search/blog.xml?display=10&amp;start=1&amp;sort=sim&amp;query=</string>
     <string name="client_id">lDMdFp664kP_RSouaMgi</string>
     <string name="client_secret">i2c7AJPwVF</string>
+    <string name="api_key">AIzaSyByVEttW_0M2BxQunUeDFddGgbrnsqaiZ8</string>
 </resources>
 

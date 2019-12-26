@@ -5,8 +5,11 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -20,23 +23,35 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/api_key" />
+
         <activity
-            android:name=".AllToDoActivity"
+            android:name=".ToDo.AllToDoActivity"
             android:label="AllToDoActivity"></activity>
         <activity
-            android:name=".SearchToDoActivity"
+            android:name=".ToDo.SearchToDoActivity"
             android:label="SearchToDoActivity"></activity>
 
         <activity
-            android:name=".InsertToDoActivity"
+            android:name=".SearchMapActivity"
+            android:label="SearchMapActivity"></activity>
+
+        <activity
+            android:name=".MapDetailActivity"
+            android:label="MapDetailActivity"></activity>
+
+        <activity
+            android:name=".ToDo.InsertToDoActivity"
             android:label="InsertToDoActivity"></activity>
 
         <activity
-            android:name=".UpdateActivity"
+            android:name=".ToDo.UpdateToDoActivity"
             android:label="UpdateActivity"></activity>
 
         <activity
-            android:name=".BlogSearchActivity"
+            android:name=".BlogAPI.BlogSearchActivity"
             android:label="BlogSearchActivity"></activity>
     </application>
 </manifest>

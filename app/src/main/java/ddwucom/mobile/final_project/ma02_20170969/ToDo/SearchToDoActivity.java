@@ -1,4 +1,4 @@
-package ddwucom.mobile.final_project.ma02_20170969;
+package ddwucom.mobile.final_project.ma02_20170969.ToDo;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,6 +16,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Date;
+
+import ddwucom.mobile.final_project.ma02_20170969.R;
 
 public class SearchToDoActivity extends AppCompatActivity {
 
@@ -79,7 +81,7 @@ public class SearchToDoActivity extends AppCompatActivity {
 				lvSearchToDo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-						Intent intent = new Intent(SearchToDoActivity.this, UpdateActivity.class);
+						Intent intent = new Intent(SearchToDoActivity.this, UpdateToDoActivity.class);
 						intent.putExtra("id", id);
 						startActivity(intent);
 					}

@@ -10,6 +10,10 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import ddwucom.mobile.final_project.ma02_20170969.ToDo.AllToDoActivity;
+import ddwucom.mobile.final_project.ma02_20170969.ToDo.InsertToDoActivity;
+import ddwucom.mobile.final_project.ma02_20170969.ToDo.SearchToDoActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
