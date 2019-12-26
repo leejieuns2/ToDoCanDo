@@ -26,6 +26,7 @@ public class InsertToDoActivity extends AppCompatActivity {
 	public static final String TAG = "InsertToDoActivity";
 	final static int BLOG_LINK_CODE = 100;
 	final static int MAP_LINK_CODE = 200;
+
 	ToDoDBHelper helper;
 	EditText etTodoDate;
 	EditText ettodoTime;
@@ -108,6 +109,7 @@ public class InsertToDoActivity extends AppCompatActivity {
 				finish();
 				break;
 		}
+		finish();
 	}
 
 	@Override

@@ -14,12 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import ddwucom.mobile.final_project.ma02_20170969.BlogAPI.BlogSearchActivity;
 import ddwucom.mobile.final_project.ma02_20170969.R;
-import ddwucom.mobile.final_project.ma02_20170969.ToDo.ToDoDBHelper;
 
 public class UpdateToDoActivity extends AppCompatActivity {
 
-    final static String TAG = "ToDoDBHelper";
+    final static String TAG = "UpdateToDoActivity";
     final static int BLOG_LINK_CODE = 100;
+    final static int MAP_LINK_CODE = 200;
 
     EditText etTodoDate;
     EditText etTodoTime;
@@ -96,7 +96,6 @@ public class UpdateToDoActivity extends AppCompatActivity {
 
                 String msg = result > 0 ? "Updated!" : "Failed!";
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-
                 break;
             case R.id.btnSBActivity:
                 Intent intent = new Intent(this, BlogSearchActivity.class);
@@ -106,6 +105,7 @@ public class UpdateToDoActivity extends AppCompatActivity {
                 finish();
                 break;
         }
+        finish();
     }
 
     @Override
@@ -116,6 +116,13 @@ public class UpdateToDoActivity extends AppCompatActivity {
                     String resultData = data.getStringExtra("result_data");
                     Toast.makeText(this, "Search Success !", Toast.LENGTH_SHORT).show();
                     etLink.setText(resultData);
+                }
+                break;
+            case MAP_LINK_CODE:
+                if(resultCode == RESULT_OK) {
+                    String resultData = data.getStringExtra("result_data");
+                    Toast.makeText(this, "Search Success !", Toast.LENGTH_SHORT).show();
+                    etLocation.setText(resultData);
                 }
                 break;
         }

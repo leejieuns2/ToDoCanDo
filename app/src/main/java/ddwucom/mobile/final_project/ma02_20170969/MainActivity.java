@@ -9,10 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import ddwucom.mobile.final_project.ma02_20170969.ToDo.AllToDoActivity;
-import ddwucom.mobile.final_project.ma02_20170969.ToDo.InsertToDoActivity;
-import ddwucom.mobile.final_project.ma02_20170969.ToDo.SearchToDoActivity;
+import ddwucom.mobile.final_project.ma02_20170969.ToDo.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, AllToDoActivity.class);
                 break;
 //            case R.id.btnOpenTmToDo:
-//                intent = new Intent(this, AllToDoActivity.class);
+//                intent = new Intent(this, AllFavPlaceActivity.class);
 //                break;
             case R.id.btnAddNewToDo:
                 intent = new Intent(this, InsertToDoActivity.class);
