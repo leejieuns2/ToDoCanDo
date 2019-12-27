@@ -33,16 +33,29 @@
                 android:text="날짜"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/etDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:fontFamily="@font/typo_dodam"
-                android:hint="ex) 20190101 (캘린더 구현 예정)"
-                android:inputType="date">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
-            </EditText>
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/typo_dodam"
+                    android:text="날짜를 선택해주세요"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/btnDateDialog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/typo_dodam"
+                    android:onClick="OnClickHandler"
+                    android:text="날짜 선택" />
+
+            </LinearLayout>
 
             <requestFocus />
 
@@ -87,24 +100,36 @@
                 android:text="위치"
                 android:textSize="18sp" />
 
+            <EditText
+                android:id="@+id/etLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/typo_dodam"
+                android:hint="google Map API 활용 예정" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/etLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/typo_dodam"
-                    android:hint="google Map API 활용 예정" />
 
                 <Button
                     android:id="@+id/btnSLActivity"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:onClick="onClick"
                     android:text="SEARCH" />
+
+                <Button
+                    android:id="@+id/btnFavActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/typo_dodam"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="자주 가는 위치"
+                    android:textSize="10sp" />
 
             </LinearLayout>
 

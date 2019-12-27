@@ -30,6 +30,7 @@
         <activity
             android:name=".ToDo.AllToDoActivity"
             android:label="AllToDoActivity"></activity>
+
         <activity
             android:name=".ToDo.SearchToDoActivity"
             android:label="SearchToDoActivity"></activity>
@@ -37,10 +38,6 @@
         <activity
             android:name=".SearchMapActivity"
             android:label="SearchMapActivity"></activity>
-
-        <activity
-            android:name=".MapDetailActivity"
-            android:label="MapDetailActivity"></activity>
 
         <activity
             android:name=".ToDo.InsertToDoActivity"
@@ -53,5 +50,13 @@
         <activity
             android:name=".BlogAPI.BlogSearchActivity"
             android:label="BlogSearchActivity"></activity>
+
+        <activity
+            android:name=".FavPlace.AllFavPlaceActivity"
+            android:label="AllFavPlaceActivity"></activity>
+
+        <activity
+            android:name=".FavPlace.InsertFavPlaceActivity"
+            android:label="InsertFavPlaceActivity"></activity>
     </application>
 </manifest>

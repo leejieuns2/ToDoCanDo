@@ -24,87 +24,48 @@ import ddwucom.mobile.final_project.ma02_20170969.SearchMapActivity;
 public class InsertFavPlaceActivity extends AppCompatActivity {
 
 	public static final String TAG = "InsertFavPlaceActivity";
-	final static int BLOG_LINK_CODE = 100;
 	final static int MAP_LINK_CODE = 200;
 	FavPlaceDBHelper helper;
-	EditText etTodoDate;
-	EditText ettodoTime;
-	EditText etTitle;
-	EditText etLocation;
-	EditText etCategory;
-	EditText etMemo;
-	EditText etLink;
+	EditText etName;
+	EditText etPlace;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_insert_todo);
+		setContentView(R.layout.activity_insert_fav);
 
 //      DBHelper 생성
 		helper = new FavPlaceDBHelper(this);
 
-		etTodoDate = (EditText) findViewById(R.id.etDate);
-		ettodoTime = (EditText) findViewById(R.id.etTime);
-		etTitle = (EditText) findViewById(R.id.etTitle);
-		etLocation = (EditText) findViewById(R.id.etLocation);
-		etCategory = (EditText) findViewById(R.id.etCategory);
-		etLink = (EditText) findViewById(R.id.etLink);
-		etMemo = (EditText) findViewById(R.id.etMemo);
+		etName = (EditText) findViewById(R.id.etFavName);
+		etPlace = (EditText) findViewById(R.id.etFavPlace);
 	}
 
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.btnNewToDoSave:
+			case R.id.btnNewFavSave:
 				SQLiteDatabase db = helper.getWritableDatabase();
 
-				String todoDate = etTodoDate.getText().toString();
-				String todoTime = ettodoTime.getText().toString();
-				String title = etTitle.getText().toString();
-				String location = etLocation.getText().toString();
-				String category = etCategory.getText().toString();
-				String link = etLink.getText().toString();
-				String memo = etMemo.getText().toString();
-
+				String name = etName.getText().toString();
+				String place = etPlace.getText().toString();
 				//			DB 메소드를 사용할 경우
 				ContentValues row = new ContentValues();
-				row.put(helper.COL_DATE, todoDate);
-				row.put(helper.COL_TIME, todoTime);
-				row.put(helper.COL_TITLE, title);
-				row.put(helper.COL_LINK, link);
-				row.put(helper.COL_CAT, category);
-				row.put(helper.COL_LOC, location);
-				row.put(helper.COL_MEMO, memo);
+				row.put(helper.COL_NAME, name);
+				row.put(helper.COL_PLACE, place);
 
 				long result = db.insert(FavPlaceDBHelper.TABLE_NAME, null, row);
-
-				//			SQL query를 직접 사용할 경우
-				//			db.execSql("insert into " + ContactDBHelper.TABLE_NAME
-				//									  + " values(null, '" + name + "', '" + link +"', '" + category "');", null);
-
 				helper.close();
 
 				if (result > 0) {
-					etTitle.setText("");
-					etLocation.setText("");
-					etCategory.setText("");
-					etMemo.setText("");
-					etLink.setText("");
+					etName.setText("");
+					etPlace.setText("");
 					//				ivImage.setImageResource(R.drawable.youtube_video);
 					Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show();
 				} else {
 					Toast.makeText(this, "저장 실패", Toast.LENGTH_SHORT).show();
 				}
 				break;
-			case R.id.btnSLActivity:
-				Intent mapIntent = new Intent(this, SearchMapActivity.class);
-				startActivityForResult(mapIntent, MAP_LINK_CODE);
-				Log.d(TAG, "SearchMapActivity start!");
-				break;
-			case R.id.btnSBActivity:
-				Intent blogIntent = new Intent(this, BlogSearchActivity.class);
-				startActivityForResult(blogIntent, BLOG_LINK_CODE);
-				break;
-			case R.id.btnNewToDoClose:
+			case R.id.btnNewFavClose:
 				finish();
 				break;
 		}
@@ -114,18 +75,11 @@ public class InsertFavPlaceActivity extends AppCompatActivity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		switch (requestCode) {
-			case BLOG_LINK_CODE:
-				if(resultCode == RESULT_OK) {
-					String resultData = data.getStringExtra("result_data");
-					Toast.makeText(this, "Search Success !", Toast.LENGTH_SHORT).show();
-					etLink.setText(resultData);
-				}
-				break;
 			case MAP_LINK_CODE:
 				if(resultCode == RESULT_OK) {
 					String resultData = data.getStringExtra("result_data");
 					Toast.makeText(this, "Search Success !", Toast.LENGTH_SHORT).show();
-					etLocation.setText(resultData);
+					etPlace.setText(resultData);
 				}
 				break;
 		}

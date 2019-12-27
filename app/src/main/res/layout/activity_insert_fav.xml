@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30sp"
+            android:layout_marginBottom="10sp"
+            android:fontFamily="@font/typo_dodam"
+            android:text="INSERT FAV PLACE"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/typo_dodam"
+            android:text="이름"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/etFavName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/typo_dodam"
+            android:hint="장소명을 입력해주세요"
+            android:inputType="date">
+
+        </EditText>
+
+        <requestFocus />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/typo_dodam"
+            android:text="위치"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/etFavPlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/typo_dodam"
+            android:hint="해당 장소의 위치를 입력해주세요"
+            android:inputType="time" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnFavSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/typo_dodam"
+            android:onClick="onClick"
+            android:text="SEARCH"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnNewFavSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/typo_dodam"
+            android:onClick="onClick"
+            android:text="INSERT"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnNewFavClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/typo_dodam"
+            android:onClick="onClick"
+            android:text="CLOSE"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+</LinearLayout>

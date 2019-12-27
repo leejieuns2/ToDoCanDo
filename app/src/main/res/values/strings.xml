@@ -4,5 +4,8 @@
     <string name="client_id">lDMdFp664kP_RSouaMgi</string>
     <string name="client_secret">i2c7AJPwVF</string>
     <string name="api_key">AIzaSyByVEttW_0M2BxQunUeDFddGgbrnsqaiZ8</string>
+    <string name="keyword_hint">카페 or 식당</string>
+    <string name="no_address_found">주소를 찾을 수 없습니다.</string>
+    <string name="address_found">주소를 찾았습니다.</string>
 </resources>
 

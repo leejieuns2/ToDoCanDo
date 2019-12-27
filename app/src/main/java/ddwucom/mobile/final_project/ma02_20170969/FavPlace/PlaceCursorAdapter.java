@@ -25,23 +25,17 @@ public class PlaceCursorAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        View listItemLayout = inflater.inflate(R.layout.custom_adapter_layout, parent, false);
+        View listItemLayout = inflater.inflate(R.layout.place_adapter_layout, parent, false);
         return listItemLayout;
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView tvTime = (TextView)view.findViewById(R.id.tvTime);
-        TextView tvTitle = (TextView)view.findViewById(R.id.tvTitle);
-        TextView tvCategory = (TextView)view.findViewById(R.id.tvCategory);
-        TextView tvMemo = (TextView)view.findViewById(R.id.tvMemo);
+        TextView tvFavName = (TextView)view.findViewById(R.id.tvFavName);
+        TextView tvFavPlace = (TextView)view.findViewById(R.id.tvFavPlace);
         // 나중에 완성시 ViewHolder 적용하기
 
-        tvTime.setText(cursor.getString(cursor.getColumnIndex(helper.COL_TIME)));
-        tvCategory.setText(cursor.getString(cursor.getColumnIndex(helper.COL_CAT)));
-        tvTitle.setText(cursor.getString(cursor.getColumnIndex(helper.COL_TITLE)));
-        tvMemo.setText(cursor.getString(cursor.getColumnIndex(helper.COL_MEMO)));
+        tvFavName.setText(cursor.getString(cursor.getColumnIndex(helper.COL_NAME)));
+        tvFavPlace.setText(cursor.getString(cursor.getColumnIndex(helper.COL_PLACE)));
     }
-
-
 }
