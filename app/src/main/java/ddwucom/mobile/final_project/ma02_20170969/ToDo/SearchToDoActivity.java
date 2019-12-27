@@ -15,7 +15,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import ddwucom.mobile.final_project.ma02_20170969.R;
 
@@ -25,7 +28,7 @@ public class SearchToDoActivity extends AppCompatActivity {
 	CalendarView calendarView;
 	Date searchDate;
 	ListView lvSearchToDo = null;
-	CustomCursorAdapter adapter;
+	CustomChoiceListViewAdapter adapter;
 	Cursor cursor;
 
 	@Override
@@ -35,7 +38,7 @@ public class SearchToDoActivity extends AppCompatActivity {
 		
 		helper = new ToDoDBHelper(this);
 		lvSearchToDo = findViewById(R.id.lvSearchToDo);
-		adapter = new CustomCursorAdapter ( this, R.layout.custom_adapter_layout, null);
+		adapter = new CustomChoiceListViewAdapter( this, R.layout.todo_adapter_layout, null);
 
 		//CalendarView 인스턴스 만들기
 		calendarView = findViewById(R.id.calendarView);
@@ -47,13 +50,13 @@ public class SearchToDoActivity extends AppCompatActivity {
 				// TODO Auto-generated method stub
 				searchDate = new Date();
 				searchDate.setTime(view.getDate());
-				Toast.makeText(SearchToDoActivity.this, ""+year+"/"+(month+1)+"/" +dayOfMonth, Toast.LENGTH_SHORT).show();
+				String date_text = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault()).format(searchDate);
+				Toast.makeText(SearchToDoActivity.this, date_text, Toast.LENGTH_SHORT).show();
 
 				SQLiteDatabase db = helper.getReadableDatabase();
-				String search = searchDate.toString();
 				/*like 을 사용하여 입력한 문자를 포함한 모든 이름 검색*/
-				cursor = db.rawQuery("select * from " + ToDoDBHelper.TABLE_NAME + " where "
-						+ ToDoDBHelper.COL_DATE + " like '%" + search +"%'", null);
+				cursor = db.rawQuery("select * from " + ToDoDBHelper.TABLE_NAME + " where " + ToDoDBHelper.COL_DUE + "=?", new String[] { date_text });
+
 
 			/*검색 결과를 하나만 표시하므로 ContactDto 사용
 			여러 개의 검색 결과를 표시하여야 할 경우 결과 개수 만큼 dto 생성 후 ArrayList 등에 저장 필요*/
@@ -64,13 +67,10 @@ public class SearchToDoActivity extends AppCompatActivity {
 
 				while(cursor.moveToNext()) {
 					item.setId(cursor.getInt(cursor.getColumnIndex(helper.COL_ID)));
-					item.setTodoDate(cursor.getString(cursor.getColumnIndex(helper.COL_DATE)));
-					item.setTodoTime(cursor.getString(cursor.getColumnIndex(helper.COL_TIME)));
+					item.setDueDate(cursor.getString(cursor.getColumnIndex(helper.COL_DUE)));
 					item.setTitle(cursor.getString(cursor.getColumnIndex(helper.COL_TITLE)));
-					item.setLink(cursor.getString(cursor.getColumnIndex(helper.COL_LINK)));
 					item.setMemo(cursor.getString(cursor.getColumnIndex(helper.COL_MEMO)));
 					item.setCategory(cursor.getString(cursor.getColumnIndex(helper.COL_CAT)));
-					item.setLocation(cursor.getString(cursor.getColumnIndex(helper.COL_LOC)));
 				}
 
 				/*필요에 따라 리스트뷰로 대체*/

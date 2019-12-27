@@ -37,7 +37,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvUpdateDate"
+                    android:id="@+id/tvUpdateDueDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/typo_dodam"
@@ -57,37 +57,6 @@
             <requestFocus />
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/typo_dodam"
-                android:text="시간"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tvUpdateTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/typo_dodam"
-                    android:text="시간을 선택해주세요"
-                    android:textSize="24sp" />
-
-                <Button
-                    android:id="@+id/btnUpdateTimeDialog"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/typo_dodam"
-                    android:onClick="OnClickHandler"
-                    android:text="시간 선택" />
-            </LinearLayout>
-
-            <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -96,50 +65,11 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/etUpdateTitle"
+                android:id="@+id/etUpdateTodoTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/typo_dodam"
                 android:ems="10" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/typo_dodam"
-                android:text="위치"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etUpdateLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/typo_dodam"
-                android:hint="google Map API 활용 예정" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnSLActivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClick"
-                    android:text="SEARCH" />
-
-                <Button
-                    android:id="@+id/btnFavActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/typo_dodam"
-                    android:onClick="onClick"
-                    android:text="자주 가는 위치"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView5"
@@ -150,7 +80,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/etUpdateCategory"
+                android:id="@+id/etUpdateTodoCat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -165,40 +95,11 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/etUpdateMemo"
+                android:id="@+id/etUpdateTodoMemo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:fontFamily="@font/typo_dodam" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/typo_dodam"
-                android:text="참고링크"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/etUpdateLink"
-                    android:layout_width="324dp"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:fontFamily="@font/typo_dodam" />
-
-                <Button
-                    android:id="@+id/btnSBActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClick"
-                    android:text="@android:string/search_go"
-                    android:fontFamily="@font/typo_dodam" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -52,6 +52,10 @@
             android:label="SearchToDoActivity"></activity>
 
         <activity
+            android:name=".ToDo.TodayToDoActivity"
+            android:label="TodayToDoActivity"></activity>
+
+        <activity
             android:name=".MapAPI.SearchMapActivity"
             android:label="SearchMapActivity"></activity>
 

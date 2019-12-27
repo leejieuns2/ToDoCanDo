@@ -12,13 +12,12 @@ public class ToDoDBHelper extends SQLiteOpenHelper {
 	private final static String DB_NAME = "todo_db";
 	public final static String TABLE_NAME = "todo_table";
 	public final static String COL_ID = "_id";
-	public final static String COL_DATE = "todoDate";
-	public final static String COL_TIME = "todoTime";
+	public final static String COL_DUE = "DueDate";
 	public final static String COL_TITLE = "title";
-	public final static String COL_LOC = "location";
 	public final static String COL_CAT = "category";
 	public final static String COL_MEMO = "memo";
-	public final static String COL_LINK = "link";
+
+
 
 	public ToDoDBHelper(Context context) {
 		super(context, DB_NAME, null, 1);
@@ -27,14 +26,16 @@ public class ToDoDBHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		String createSql = "create table " + TABLE_NAME + " ( " +  COL_ID + " integer primary key autoincrement,"
-				+ COL_DATE + " TEXT, " + COL_TIME + " TEXT, " + COL_TITLE + " TEXT, " +  COL_LOC + " TEXT, " +
-				COL_CAT + " TEXT, " + COL_MEMO + " TEXT, " + COL_LINK + " TEXT);";
+				+ COL_DUE + " TEXT, " + COL_TITLE + " TEXT, " + COL_CAT + " TEXT, " + COL_MEMO + " TEXT);";
 		Log.d(TAG, createSql);
 		db.execSQL(createSql);
 
-		db.execSQL("insert into " + TABLE_NAME + " values (null, '2019년 11월 8일', '하루종일', '모바일응용 과제', '동덕여자대학교 인문관',  '과제', '빨리하자', 'https://www.youtube.com/channel/UC9kmlDcqksaOnCkC_qzGacA')");
-        db.execSQL("insert into " + TABLE_NAME + " values (null, '2019년 11월 9일', '하루종일', '알고리즘 과제', '동덕여자대학교 인문관', '과제', 'Clock', 'https://www.youtube.com/channel/UC9JU9mfYpg4KqxNZtD91GQg')");
-        db.execSQL("insert into " + TABLE_NAME + " values (null, '2019년 11월 10일', '23시 00분', '데베프 팀플', '동덕여자대학교 3층 랩실', '과제', '주 2일이상 만남', 'https://www.youtube.com/channel/UCPWFxcwPliEBMwJjmeFIDIg')");
+		db.execSQL("insert into " + TABLE_NAME + " values (null, '2019년 12월 24일', '데베프 최종보고서', '과제', '이클래스 제출')");
+		db.execSQL("insert into " + TABLE_NAME + " values (null, '2019년 12월 27일', '학교 일찍 오기', '생활', '과제 끝내야돼')");
+		db.execSQL("insert into " + TABLE_NAME + " values (null, '2019년 12월 27일', '특별근로', '알바', '10-4시')");
+		db.execSQL("insert into " + TABLE_NAME + " values (null, '2019년 12월 27일', '일찍 자기', '생활', '드디어 일찍 잘 수 있다,,,,')");
+		db.execSQL("insert into " + TABLE_NAME + " values (null, '2019년 12월 27일', '모바일응용 플젝', '과제', '이클래스 제출')");
+		db.execSQL("insert into " + TABLE_NAME + " values (null, '2020년 1월 3일', '알고리즘 최종과제', '과제', '과제서버 제출')");
 	}
 
 	@Override

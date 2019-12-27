@@ -44,11 +44,14 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnSearchCal:
                 intent = new Intent(this, SearchCalActivity.class);
                 break;
-            case R.id.btnTodayToDo:
-                intent = new Intent(this, AllToDoActivity.class);
-                break;
             case R.id.btnAddToDo:
                 intent = new Intent(this, InsertToDoActivity.class);
+                break;
+            case R.id.btnTodayToDo:
+                intent = new Intent(this, TodayToDoActivity.class);
+                break;
+            case R.id.btnAllToDo:
+                intent = new Intent(this, AllToDoActivity.class);
                 break;
             case R.id.btnSearchToDo:
                 intent = new Intent(this, SearchToDoActivity.class);

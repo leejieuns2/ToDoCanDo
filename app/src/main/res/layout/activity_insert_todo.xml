@@ -40,7 +40,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvDate"
+                    android:id="@+id/tvDueDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/typo_dodam"
@@ -60,37 +60,6 @@
             <requestFocus />
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/typo_dodam"
-                android:text="시간"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tvTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/typo_dodam"
-                    android:text="시간을 선택해주세요"
-                    android:textSize="24sp" />
-
-                <Button
-                    android:id="@+id/btnTimeDialog"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/typo_dodam"
-                    android:onClick="OnClickHandler"
-                    android:text="시간 선택" />
-            </LinearLayout>
-
-            <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,53 +68,12 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/etTitle"
+                android:id="@+id/etTodoTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:fontFamily="@font/typo_dodam"
                 android:hint="ex) 오늘의 할일" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/typo_dodam"
-                android:text="위치"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/typo_dodam"
-                android:hint="google Map API 활용 예정" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnSLActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:onClick="onClick"
-                    android:text="SEARCH" />
-
-                <Button
-                    android:id="@+id/btnFavActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/typo_dodam"
-                    android:gravity="center"
-                    android:onClick="onClick"
-                    android:text="자주 가는 위치"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView5"
@@ -156,7 +84,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/etCategory"
+                android:id="@+id/etTodoCat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -172,41 +100,12 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/etMemo"
+                android:id="@+id/etToDoMemo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:fontFamily="@font/typo_dodam"
                 android:hint="자유롭게 메모를 남겨보세요 !" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/typo_dodam"
-                android:text="참고링크"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/etLink"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/typo_dodam"
-                    android:hint="네이버 blog 게시물을 검색해보세요 >>" />
-
-                <Button
-                    android:id="@+id/btnSBActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/typo_dodam"
-                    android:onClick="onClick"
-                    android:text="@android:string/search_go" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

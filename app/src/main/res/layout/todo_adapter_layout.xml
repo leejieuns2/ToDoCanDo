@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ddwucom.mobile.final_project.ma02_20170969.ToDo.CheckableLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/CheckableLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
+
+    <CheckBox
+        android:id="@+id/cbToDo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center_horizontal" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:fontFamily="@font/typo_dodam"
+            android:text="TextView"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentTop="false"
+            android:layout_marginStart="0dp"
+            android:fontFamily="@font/typo_dodam"
+            android:text="TextView" />
+    </LinearLayout>
+
+</ddwucom.mobile.final_project.ma02_20170969.ToDo.CheckableLinearLayout>
