@@ -55,7 +55,7 @@ public class InsertCalActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_insert_todo);
+		setContentView(R.layout.activity_insert_cal);
 		currentTime = Calendar.getInstance().getTime();
 		String date_text = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault()).format(currentTime);
         String time_text = new SimpleDateFormat("hh시 mm분", Locale.getDefault()).format(currentTime);
@@ -119,7 +119,7 @@ public class InsertCalActivity extends AppCompatActivity {
 
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.btnNewToDoSave:
+			case R.id.btnNewCalSave:
 				SQLiteDatabase db = helper.getWritableDatabase();
 
 				String todoDate = tvTodoDate.getText().toString();
@@ -174,7 +174,7 @@ public class InsertCalActivity extends AppCompatActivity {
                 Intent favIntent = new Intent(this, AllFavPlaceActivity.class);
                 startActivityForResult(favIntent, FAV_LINK_CODE);
                 break;
-			case R.id.btnNewToDoClose:
+			case R.id.btnNewCalClose:
 				finish();
 				break;
 		}

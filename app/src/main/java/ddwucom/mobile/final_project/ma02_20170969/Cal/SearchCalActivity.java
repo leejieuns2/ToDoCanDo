@@ -24,17 +24,17 @@ public class SearchCalActivity extends AppCompatActivity {
 	CalDBHelper helper;
 	CalendarView calendarView;
 	Date searchDate;
-	ListView lvSearchToDo = null;
+	ListView lvSearchCal = null;
 	CustomCursorAdapter adapter;
 	Cursor cursor;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_search_todo);
+		setContentView(R.layout.activity_search_cal);
 
 		helper = new CalDBHelper(this);
-		lvSearchToDo = findViewById(R.id.lvSearchToDo);
+		lvSearchCal = findViewById(R.id.lvSearchCal);
 		adapter = new CustomCursorAdapter( this, R.layout.custom_adapter_layout, null);
 
 		//CalendarView 인스턴스 만들기
@@ -75,10 +75,10 @@ public class SearchCalActivity extends AppCompatActivity {
 
 				/*필요에 따라 리스트뷰로 대체*/
 				//tvSearchResult.setText(item.toString() + "\n"); 리스트뷰로 교체해야함
-				lvSearchToDo.setAdapter(adapter);
+				lvSearchCal.setAdapter(adapter);
 
 				//		리스트 뷰 클릭 처리
-				lvSearchToDo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+				lvSearchCal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 						Intent intent = new Intent(SearchCalActivity.this, UpdateCalActivity.class);
@@ -89,7 +89,7 @@ public class SearchCalActivity extends AppCompatActivity {
 
 
 				//		리스트 뷰 롱클릭 처리
-				lvSearchToDo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+				lvSearchCal.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 					@Override
 					public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -129,7 +129,7 @@ public class SearchCalActivity extends AppCompatActivity {
 
 	public void onClick(View v) {
 		switch(v.getId()) {
-		case R.id.btnClose:
+		case R.id.btnSearchCalClose:
 			finish();
 			break;
 		}

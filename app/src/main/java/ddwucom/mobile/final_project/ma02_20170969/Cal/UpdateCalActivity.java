@@ -27,7 +27,7 @@ import ddwucom.mobile.final_project.ma02_20170969.R;
 
 public class UpdateCalActivity extends AppCompatActivity {
 
-    final static String TAG = "UpdateToDoActivity";
+    final static String TAG = "UpdateCalActivity";
     private DatePickerDialog.OnDateSetListener dateCallbackMethod;
     private TimePickerDialog.OnTimeSetListener timeCallbackMethod;
     final static int BLOG_LINK_CODE = 100;
@@ -49,7 +49,7 @@ public class UpdateCalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_todo);
+        setContentView(R.layout.activity_update_cal);
 //      DBHelper 생성
         helper = new CalDBHelper(this);
         tvTodoDate = (TextView) findViewById(R.id.tvUpdateDate);
@@ -111,7 +111,7 @@ public class UpdateCalActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         switch(v.getId()) {
-            case R.id.btnUpdateToDoSave:
+            case R.id.btnUpdateCalSave:
                 /*id 를 기준으로 화면의 값으로 DB 업데이트*/
                 SQLiteDatabase db = helper.getWritableDatabase();
                 ContentValues row = new ContentValues();
@@ -132,6 +132,7 @@ public class UpdateCalActivity extends AppCompatActivity {
 
                 String msg = result > 0 ? "Updated!" : "Failed!";
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                finish();
                 break;
             case R.id.btnSBActivity:
                 Intent intent = new Intent(this, BlogSearchActivity.class);
@@ -140,11 +141,10 @@ public class UpdateCalActivity extends AppCompatActivity {
             case R.id.btnFavActivity:
                 Intent favIntent = new Intent(this, AllFavPlaceActivity.class);
                 startActivityForResult(favIntent, FAV_LINK_CODE);
-            case R.id.btnUpdateToDoClose:
+            case R.id.btnUpdateCalClose:
                 finish();
                 break;
         }
-        finish();
     }
 
     public void OnClickHandler(View v)
@@ -153,7 +153,6 @@ public class UpdateCalActivity extends AppCompatActivity {
         switch (v.getId()) {
             case(R.id.btnUpdateDateDialog):
                 DatePickerDialog datePickerDialog = new DatePickerDialog(this, dateCallbackMethod, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-
                 datePickerDialog.show();
                 break;
             case(R.id.btnUpdateTimeDialog):

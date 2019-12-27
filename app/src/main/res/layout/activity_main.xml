@@ -1,59 +1,101 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/searchToDoBtn"
+    android:id="@+id/LinearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/mainImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/calendar"/>
-
-    <Button
-        android:id="@+id/btnOpenTdToDo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/typo_dodam"
-        android:onClick="onClick"
-        android:text="오늘의 TODO" />
-
-<!--    <Button-->
-<!--        android:id="@+id/btnOpenTmToDo"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fontFamily="@font/custom_font"-->
-<!--        android:text="내일의 TODO" />-->
+    <!--    <Button-->
+    <!--        android:id="@+id/btnOpenTmToDo"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:fontFamily="@font/custom_font"-->
+    <!--        android:text="내일의 TODO" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp">
+
+        <ImageView
+            android:id="@+id/mainImage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/calendar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="182dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnTodayToDo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/typo_dodam"
+                android:text="오늘의 TODO"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnAddToDo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/typo_dodam"
+                android:text="TODO 추가"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnSearchToDo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/typo_dodam"
+                android:text="ToDo 검색"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textAlignment="center">
 
         <Button
-            android:id="@+id/btnAddNewToDo"
+            android:id="@+id/btnOpenCal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/typo_dodam"
             android:onClick="onClick"
-            android:text="TODO 추가" />
+            android:text="전체 일정"
+            android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btnSearchToDo"
+            android:id="@+id/btnAddCal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/typo_dodam"
             android:onClick="onClick"
-            android:text="TODO 검색" />
+            android:text="일정 추가"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnSearchCal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/typo_dodam"
+            android:onClick="onClick"
+            android:text="일정 검색"
+            android:textSize="20sp" />
 
     </LinearLayout>
 

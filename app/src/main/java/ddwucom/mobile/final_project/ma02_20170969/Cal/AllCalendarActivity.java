@@ -19,7 +19,7 @@ public class AllCalendarActivity extends AppCompatActivity {
 
 	final static String TAG = "AllCalendarActivity";
 
-	ListView lvToDo = null;
+	ListView lvCal = null;
 	CalDBHelper helper;
 	Cursor cursor;
 	CustomCursorAdapter adapter;
@@ -27,18 +27,18 @@ public class AllCalendarActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_all_todo);
-		lvToDo = (ListView)findViewById(R.id.lvToDo);
+		setContentView(R.layout.activity_all_cal);
+		lvCal = (ListView)findViewById(R.id.lvCal);
 
 		helper = new CalDBHelper(this);
 
 //		  SimpleCursorAdapter 객체 생성
 		adapter = new CustomCursorAdapter( this, R.layout.custom_adapter_layout, null);
 
-		lvToDo.setAdapter(adapter);
+		lvCal.setAdapter(adapter);
 
 //		리스트 뷰 클릭 처리
-		lvToDo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		lvCal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Intent intent = new Intent(AllCalendarActivity.this, UpdateCalActivity.class);
@@ -49,7 +49,7 @@ public class AllCalendarActivity extends AppCompatActivity {
 
 
 //		리스트 뷰 롱클릭 처리
-		lvToDo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+		lvCal.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 

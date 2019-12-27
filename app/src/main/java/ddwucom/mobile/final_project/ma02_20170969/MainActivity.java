@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import ddwucom.mobile.final_project.ma02_20170969.Cal.AllCalendarActivity;
+import ddwucom.mobile.final_project.ma02_20170969.Cal.InsertCalActivity;
+import ddwucom.mobile.final_project.ma02_20170969.Cal.SearchCalActivity;
 import ddwucom.mobile.final_project.ma02_20170969.ToDo.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,13 +35,19 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = null;
 
         switch (v.getId()) {
-            case R.id.btnOpenTdToDo:
+            case R.id.btnOpenCal:
+                intent = new Intent(this, AllCalendarActivity.class);
+                break;
+            case R.id.btnAddCal:
+                intent = new Intent(this, InsertCalActivity.class);
+                break;
+            case R.id.btnSearchCal:
+                intent = new Intent(this, SearchCalActivity.class);
+                break;
+            case R.id.btnTodayToDo:
                 intent = new Intent(this, AllToDoActivity.class);
                 break;
-//            case R.id.btnOpenTmToDo:
-//                intent = new Intent(this, AllFavPlaceActivity.class);
-//                break;
-            case R.id.btnAddNewToDo:
+            case R.id.btnAddToDo:
                 intent = new Intent(this, InsertToDoActivity.class);
                 break;
             case R.id.btnSearchToDo:

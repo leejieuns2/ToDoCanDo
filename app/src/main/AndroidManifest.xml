@@ -28,6 +28,22 @@
             android:value="@string/api_key" />
 
         <activity
+            android:name=".Cal.AllCalendarActivity"
+            android:label="AllCalendarActivity"></activity>
+
+        <activity
+            android:name=".Cal.InsertCalActivity"
+            android:label="InsertCalActivity"></activity>
+
+        <activity
+            android:name=".Cal.SearchCalActivity"
+            android:label="SearchCalActivity"></activity>
+
+        <activity
+            android:name=".Cal.UpdateCalActivity"
+            android:label="UpdateCalActivity"></activity>
+
+        <activity
             android:name=".ToDo.AllToDoActivity"
             android:label="AllToDoActivity"></activity>
 

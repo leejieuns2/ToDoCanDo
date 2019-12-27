@@ -12,11 +12,11 @@
         android:layout_marginTop="30sp"
         android:layout_marginBottom="30sp"
         android:fontFamily="@font/typo_dodam"
-        android:text="ToDoCanDo"
+        android:text="모든 일정 보기"
         android:textSize="20sp" />
 
     <ListView
-        android:id="@+id/lvToDo"
+        android:id="@+id/lvCal"
         android:layout_width="match_parent"
         android:fontFamily="@font/typo_dodam"
         android:layout_height="wrap_content"></ListView>
