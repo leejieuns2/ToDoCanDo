@@ -1,16 +1,25 @@
 package ddwucom.mobile.final_project.ma02_20170969.ToDo;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import ddwucom.mobile.final_project.ma02_20170969.BlogAPI.BlogSearchActivity;
 import ddwucom.mobile.final_project.ma02_20170969.FavPlace.AllFavPlaceActivity;
@@ -19,12 +28,14 @@ import ddwucom.mobile.final_project.ma02_20170969.R;
 public class UpdateToDoActivity extends AppCompatActivity {
 
     final static String TAG = "UpdateToDoActivity";
+    private DatePickerDialog.OnDateSetListener dateCallbackMethod;
+    private TimePickerDialog.OnTimeSetListener timeCallbackMethod;
     final static int BLOG_LINK_CODE = 100;
     final static int MAP_LINK_CODE = 200;
     final static int FAV_LINK_CODE = 300;
 
-    EditText etTodoDate;
-    EditText etTodoTime;
+    TextView tvTodoDate;
+    TextView tvTodoTime;
     EditText etTitle;
     EditText etLocation;
     EditText etCategory;
@@ -39,9 +50,10 @@ public class UpdateToDoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_todo);
-
-        etTodoDate = findViewById(R.id.etUpdateDate);
-        etTodoTime = findViewById(R.id.etUpdateTime);
+//      DBHelper 생성
+        helper = new ToDoDBHelper(this);
+        tvTodoDate = (TextView) findViewById(R.id.tvUpdateDate);
+        tvTodoTime = (TextView) findViewById(R.id.tvUpdateTime);
         etTitle = findViewById(R.id.etUpdateTitle);
         etLocation = findViewById(R.id.etUpdateLocation);
         etCategory = findViewById(R.id.etUpdateCategory);
@@ -51,6 +63,28 @@ public class UpdateToDoActivity extends AppCompatActivity {
         helper = new ToDoDBHelper(this);
 
         id = getIntent().getLongExtra("id", 0);
+        this.InitializeListener();
+    }
+
+    public void InitializeListener()
+    {
+        dateCallbackMethod = new DatePickerDialog.OnDateSetListener()
+        {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
+            {
+                tvTodoDate.setText(year + "년" + (monthOfYear + 1) + "월" + dayOfMonth + "일");
+            }
+        };
+
+        timeCallbackMethod = new TimePickerDialog.OnTimeSetListener()
+        {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute)
+            {
+                tvTodoTime.setText(hourOfDay + "시" + minute + "분");
+            }
+        };
     }
 
     @Override
@@ -61,8 +95,8 @@ public class UpdateToDoActivity extends AppCompatActivity {
 
         Cursor cursor = db.rawQuery( "select * from " + ToDoDBHelper.TABLE_NAME + " where " + ToDoDBHelper.COL_ID + "=?", new String[] { String.valueOf(id) });
         while (cursor.moveToNext()) {
-            etTodoDate.setText( cursor.getString( cursor.getColumnIndex(helper.COL_DATE) ) );
-            etTodoTime.setText( cursor.getString( cursor.getColumnIndex(helper.COL_TIME) ) );
+            tvTodoDate.setText( cursor.getString( cursor.getColumnIndex(helper.COL_DATE) ) );
+            tvTodoTime.setText( cursor.getString( cursor.getColumnIndex(helper.COL_TIME) ) );
             etTitle.setText( cursor.getString( cursor.getColumnIndex(helper.COL_TITLE) ) );
             etLink.setText( cursor.getString( cursor.getColumnIndex(helper.COL_LINK) ) );
             etCategory.setText( cursor.getString( cursor.getColumnIndex(helper.COL_CAT) ) );
@@ -82,8 +116,8 @@ public class UpdateToDoActivity extends AppCompatActivity {
                 SQLiteDatabase db = helper.getWritableDatabase();
                 ContentValues row = new ContentValues();
 
-                row.put(helper.COL_DATE, etTodoDate.getText().toString());
-                row.put(helper.COL_TIME, etTodoTime.getText().toString());
+                row.put(helper.COL_DATE, tvTodoDate.getText().toString());
+                row.put(helper.COL_TIME, tvTodoTime.getText().toString());
                 row.put(helper.COL_TITLE, etTitle.getText().toString());
                 row.put(helper.COL_LOC, etLocation.getText().toString());
                 row.put(helper.COL_MEMO, etMemo.getText().toString());
@@ -111,6 +145,24 @@ public class UpdateToDoActivity extends AppCompatActivity {
                 break;
         }
         finish();
+    }
+
+    public void OnClickHandler(View v)
+    {
+        Calendar calendar = new GregorianCalendar(Locale.KOREA);
+        switch (v.getId()) {
+            case(R.id.btnUpdateDateDialog):
+                DatePickerDialog datePickerDialog = new DatePickerDialog(this, dateCallbackMethod, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+
+                datePickerDialog.show();
+                break;
+            case(R.id.btnUpdateTimeDialog):
+                TimePickerDialog timePickerDialog = new TimePickerDialog(this, timeCallbackMethod, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
+                timePickerDialog.show();
+                break;
+        }
+
+
     }
 
     @Override

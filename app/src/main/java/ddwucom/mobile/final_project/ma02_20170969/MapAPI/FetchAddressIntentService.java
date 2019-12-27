@@ -1,4 +1,4 @@
-package ddwucom.mobile.final_project.ma02_20170969;
+package ddwucom.mobile.final_project.ma02_20170969.MapAPI;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import ddwucom.mobile.final_project.ma02_20170969.R;
 
 /* FetchAddressIntentService 는 AndroidManifest.xml 에 서비스로 등록한 상태여야 사용 가능 */
 public class FetchAddressIntentService extends IntentService {

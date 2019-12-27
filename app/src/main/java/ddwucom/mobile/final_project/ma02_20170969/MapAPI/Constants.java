@@ -1,4 +1,4 @@
-package ddwucom.mobile.final_project.ma02_20170969;
+package ddwucom.mobile.final_project.ma02_20170969.MapAPI;
 
 
 /* Intent 또는 Receiver 등에 필요한 상수를 모아서 정의 */

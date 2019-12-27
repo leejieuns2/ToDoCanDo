@@ -36,7 +36,7 @@
             android:label="SearchToDoActivity"></activity>
 
         <activity
-            android:name=".SearchMapActivity"
+            android:name=".MapAPI.SearchMapActivity"
             android:label="SearchMapActivity"></activity>
 
         <activity

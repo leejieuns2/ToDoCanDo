@@ -1,4 +1,4 @@
-package ddwucom.mobile.final_project.ma02_20170969;
+package ddwucom.mobile.final_project.ma02_20170969.MapAPI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +33,7 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 import java.util.Arrays;
 import java.util.List;
 
+import ddwucom.mobile.final_project.ma02_20170969.R;
 import noman.googleplaces.NRPlaces;
 import noman.googleplaces.PlaceType;
 import noman.googleplaces.PlacesException;

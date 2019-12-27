@@ -14,8 +14,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ddwucom.mobile.final_project.ma02_20170969.R;
-import ddwucom.mobile.final_project.ma02_20170969.ToDo.AllToDoActivity;
-import ddwucom.mobile.final_project.ma02_20170969.ToDo.UpdateToDoActivity;
 
 public class AllFavPlaceActivity extends AppCompatActivity {
 

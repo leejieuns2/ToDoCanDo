@@ -9,7 +9,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,9 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import ddwucom.mobile.final_project.ma02_20170969.BlogAPI.BlogSearchActivity;
 import ddwucom.mobile.final_project.ma02_20170969.R;
-import ddwucom.mobile.final_project.ma02_20170969.SearchMapActivity;
 
 public class InsertFavPlaceActivity extends AppCompatActivity {
 
