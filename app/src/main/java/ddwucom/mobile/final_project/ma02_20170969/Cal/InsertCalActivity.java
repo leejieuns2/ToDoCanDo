@@ -193,8 +193,8 @@ public class InsertCalActivity extends AppCompatActivity {
 				break;
 			case MAP_LINK_CODE:
 				if(resultCode == RESULT_OK) {
-					String location = data.getStringExtra("address");
-					Toast.makeText(this, "Search Success ! , " + data.getStringExtra("name"), Toast.LENGTH_SHORT).show();
+					String location = data.getStringExtra("result_data");
+					Toast.makeText(this, "Search Success ! , " + data.getStringExtra("result_data"), Toast.LENGTH_SHORT).show();
 					etLocation.setText(location);
 				}
 				break;

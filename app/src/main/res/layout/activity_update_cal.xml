@@ -114,8 +114,7 @@
                 android:id="@+id/etUpdateLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/typo_dodam"
-                android:hint="google Map API 활용 예정" />
+                android:fontFamily="@font/typo_dodam" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

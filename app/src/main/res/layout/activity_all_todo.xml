@@ -12,13 +12,16 @@
         android:layout_marginTop="30sp"
         android:layout_marginBottom="30sp"
         android:fontFamily="@font/typo_dodam"
-        android:text="ToDoCanDo"
+        android:text="ToDoList"
         android:textSize="20sp" />
 
     <ListView
         android:id="@+id/lvToDo"
         android:layout_width="match_parent"
-        android:fontFamily="@font/typo_dodam"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="match_parent"
+        android:choiceMode="multipleChoice"
+        android:fontFamily="@font/typo_dodam">
+
+    </ListView>
 
 </LinearLayout>

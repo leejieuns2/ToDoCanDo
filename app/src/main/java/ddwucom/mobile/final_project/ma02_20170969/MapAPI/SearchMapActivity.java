@@ -33,6 +33,7 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 import java.util.Arrays;
 import java.util.List;
 
+import ddwucom.mobile.final_project.ma02_20170969.Cal.InsertCalActivity;
 import ddwucom.mobile.final_project.ma02_20170969.R;
 import noman.googleplaces.NRPlaces;
 import noman.googleplaces.PlaceType;
@@ -48,6 +49,7 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
     private GoogleMap mGoogleMap;
     private MarkerOptions markerOptions;
     private EditText etKeyword;
+    Intent intent = null;
 
     /*DATA*/
 
@@ -86,7 +88,7 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
                 String placeId = marker.getTag().toString();    // 마커의 setTag() 로 저장한 Place ID 확인
 
                 List<Place.Field> placeFields       // 상세정보로 요청할 정보의 유형 지정
-                        = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.PHONE_NUMBER, Place.Field.ADDRESS);
+                        = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS);
 
                 FetchPlaceRequest request = FetchPlaceRequest.builder(placeId, placeFields).build();    // 요청 생성
 
@@ -96,13 +98,12 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
                     public void onSuccess(FetchPlaceResponse fetchPlaceResponse) {  // 요청 성공 시
                         Place place = fetchPlaceResponse.getPlace();
                         Log.i(TAG, "Place found: " + place.getName());  // 장소 명 확인 등
-                        Log.i(TAG, "Phone: " + place.getPhoneNumber());
                         Log.i(TAG, "Address: " + place.getAddress());
 
-                        Intent intent = new Intent();
-                        intent.putExtra("name", place.getName());
-                        intent.putExtra("address", place.getAddress());
+                        intent = new Intent();
+                        intent.putExtra("result_data", String.valueOf(place.getName()));
                         setResult(RESULT_OK, intent);
+                        finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {   // 요청 실패 시 처리 리스너 연결
                     @Override
@@ -112,9 +113,9 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
                             int statusCode = apiException.getStatusCode();  // 필요 시 확인
                             Log.e(TAG, "Place not found: " + exception.getMessage());
                         }
+                        finish();
                     }
                 });
-                finish();
             }
         });
     }
