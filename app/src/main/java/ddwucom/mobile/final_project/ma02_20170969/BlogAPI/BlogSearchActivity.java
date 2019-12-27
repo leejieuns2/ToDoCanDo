@@ -83,7 +83,7 @@ public class BlogSearchActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         switch(v.getId()) {
-            case R.id.btnSearch:
+            case R.id.btnBlogSearch:
                 query = etTarget.getText().toString();
                 try {
                     new NaverAsyncTask().execute(apiAddress + URLEncoder.encode(query, "UTF-8"));

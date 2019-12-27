@@ -1,26 +1,12 @@
 package ddwucom.mobile.final_project.ma02_20170969;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import java.util.Arrays;
-import java.util.List;
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +18,6 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -57,16 +42,14 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
 
     final static String TAG = "SearchMapActivity";
     final static int PERMISSION_REQ_CODE = 100;
-    final static int MAP_LINK_CODE = 200;
 
     /*UI*/
     private GoogleMap mGoogleMap;
     private MarkerOptions markerOptions;
-    private double latitude;
-    private double lontitude;
+    private EditText etKeyword;
 
     /*DATA*/
-    // TODO: Place 클라이언트 객체 선언
+
     private PlacesClient placesClient;
 
     @Override
@@ -74,11 +57,14 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_map);
 
+        etKeyword = findViewById(R.id.etKeyword);
+
         // 권한 확인 후 권한이 있을 경우 맵 로딩 실행
         if (checkPermission()) {
             mapLoad();
-        }
-        // TODO: Places 초기화 및 클라이언트 생성
+        };
+
+        // Places 초기화 및 클라이언트 생성
         Places.initialize(getApplicationContext(), getString(R.string.api_key));
         placesClient = Places.createClient(this);
     }
@@ -89,125 +75,92 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
         mGoogleMap = googleMap;
         Log.d(TAG, "Map ready");
 
-        // 맵 로딩 후 내 위치 표시 버튼 관련 설정
-        mGoogleMap.setMyLocationEnabled(true);
-        mGoogleMap.setOnMyLocationButtonClickListener(locationButtonClickListener);
-        mGoogleMap.setOnMyLocationClickListener(locationClickListener);
-
+        // TODO: 맵 로딩 후 초기에 해야 할 작업 구현
         markerOptions = new MarkerOptions();
 //        mGeoDataClient = Places.getGeoDataClient(MainActivity.this);
 
         mGoogleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(final Marker marker) {
-                // TODO: 마커의 InfoWindow 클릭 시 이벤트 처리
-                String placeId = marker.getTag().toString(); // 마커의 setTag()로 저장한 PlaceID 확인
-                List<Place.Field> placeFields // 상세정보로 요청할 정보의 유형 지정
+                String placeId = marker.getTag().toString();    // 마커의 setTag() 로 저장한 Place ID 확인
+
+                List<Place.Field> placeFields       // 상세정보로 요청할 정보의 유형 지정
                         = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.PHONE_NUMBER, Place.Field.ADDRESS);
-                FetchPlaceRequest request = FetchPlaceRequest.builder(placeId, placeFields).build(); // 요청 생성
 
-                // 요청 처리 및 요청 성공 / 실패 리스너 지정
+                FetchPlaceRequest request = FetchPlaceRequest.builder(placeId, placeFields).build();    // 요청 생성
+
+                // 요청 처리 및 요청 성공/실패 리스너 지정
                 placesClient.fetchPlace(request).addOnSuccessListener(new OnSuccessListener<FetchPlaceResponse>() {
-                    @Override
-                    public void onSuccess(FetchPlaceResponse fetchPlaceResponse) {
+                    @Override                    // 요청 성공 시 처리 리스너 연결
+                    public void onSuccess(FetchPlaceResponse fetchPlaceResponse) {  // 요청 성공 시
                         Place place = fetchPlaceResponse.getPlace();
-                        Intent intent = new Intent(SearchMapActivity.this, MapDetailActivity.class);
-                        intent.putExtra("phone", place.getPhoneNumber());
-                        intent.putExtra("name", place.getName());
-                        intent.putExtra("address", place.getAddress());
-
-                        Log.i(TAG, "Place found: " + place.getName());
+                        Log.i(TAG, "Place found: " + place.getName());  // 장소 명 확인 등
                         Log.i(TAG, "Phone: " + place.getPhoneNumber());
                         Log.i(TAG, "Address: " + place.getAddress());
 
-                        startActivity(intent);
+                        Intent intent = new Intent();
+                        intent.putExtra("name", place.getName());
+                        intent.putExtra("address", place.getAddress());
+                        setResult(RESULT_OK, intent);
                     }
-                }).addOnFailureListener(new OnFailureListener() {
+                }).addOnFailureListener(new OnFailureListener() {   // 요청 실패 시 처리 리스너 연결
                     @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        if(exception instanceof ApiException) {
+                    public void onFailure(@NonNull Exception exception) {   // 요청 실패 시
+                        if (exception instanceof ApiException) {
                             ApiException apiException = (ApiException) exception;
-                            int statusCode = apiException.getStatusCode();
+                            int statusCode = apiException.getStatusCode();  // 필요 시 확인
                             Log.e(TAG, "Place not found: " + exception.getMessage());
                         }
                     }
                 });
+                finish();
             }
         });
     }
 
-    GoogleMap.OnMyLocationButtonClickListener locationButtonClickListener =
-            new GoogleMap.OnMyLocationButtonClickListener() {
-                @Override
-                public boolean onMyLocationButtonClick() {
-                    Toast.makeText(SearchMapActivity.this, "Clicked!", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-            };
-
-    GoogleMap.OnMyLocationClickListener locationClickListener =
-            new GoogleMap.OnMyLocationClickListener() {
-                @Override
-                public void onMyLocationClick(@NonNull Location location) {
-                    latitude = location.getLatitude();
-                    lontitude = location.getLongitude();
-                    String mag = String.format("현재 위치: (%f, %f)", latitude, lontitude);
-                    Toast.makeText(SearchMapActivity.this, mag, Toast.LENGTH_LONG).show();
-                }
-            };
-
-
-
     public void onClick(View v) {
-        mGoogleMap.clear();
         switch(v.getId()) {
-            case R.id.btnSearch:
-                // TODO: 장소 정보 요청;
-                EditText editText = findViewById(R.id.etKeyword);
-                String keyword = editText.getText().toString();
-                if(keyword.equals("cafe")) {
-                    new NRPlaces.Builder().listener(placesListener)
-                            .key(getString(R.string.api_key))
-                            .latlng(latitude, lontitude)
-                            .radius(100)
-                            .type(PlaceType.CAFE)
-                            .build()
-                            .execute();
-                } else if(keyword.equals("restaurant")) {
-                    new NRPlaces.Builder().listener(placesListener)
-                            .key(getString(R.string.api_key))
-                            .latlng(latitude, lontitude)
-                            .radius(100)
-                            .type(PlaceType.RESTAURANT)
-                            .build()
-                            .execute();
+            case R.id.btnMapSearch:
+
+                if (etKeyword.getText().toString().equals("카페")) {
+                    searchStart(PlaceType.CAFE);
+                } else if (etKeyword.getText().toString().equals("식당")) {
+                    searchStart(PlaceType.RESTAURANT);
+                } else if (etKeyword.getText().toString().equals("영화관")) {
+                    searchStart(PlaceType.MOVIE_THEATER);
+                } else if (etKeyword.getText().toString().equals("은행")) {
+                    searchStart(PlaceType.BANK);
                 }
+
+                Toast.makeText(this, "Search Success !", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
-    // TODO: PlaceListener 구현
+
+    private void searchStart(String type) {
+        new NRPlaces.Builder().listener(placesListener)
+                .key(getString(R.string.api_key))
+                .latlng(37.604094, 127.042463)
+                .radius(100)
+                .type(type)
+                .build()
+                .execute();
+    }
+
+
+
     PlacesListener placesListener = new PlacesListener() {
-        @Override
-        public void onPlacesFailure(PlacesException e) {
-
-        }
-
-        @Override
-        public void onPlacesStart() {
-
-        }
-
         @Override
         public void onPlacesSuccess(final List<noman.googleplaces.Place> places) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    mGoogleMap.clear();     // 기존의 마커 삭제
+
                     for (noman.googleplaces.Place place : places) {
                         markerOptions.title(place.getName());
                         markerOptions.position(new LatLng(place.getLatitude(), place.getLongitude()));
-                        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-                        // 상수 값 (HUE_AZURE 부분) 을 변경하여 Marker 모양 변경 가능
                         Marker newMarker = mGoogleMap.addMarker(markerOptions);
                         newMarker.setTag(place.getPlaceId());
                         Log.d(TAG, "ID: " + place.getPlaceId());
@@ -215,15 +168,18 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
                 }
             });
         }
-
         @Override
-        public void onPlacesFinished() {
-        }
+        public void onPlacesFailure(PlacesException e) {}
+        @Override
+        public void onPlacesStart() {}
+        @Override
+        public void onPlacesFinished() {}
     };
+
+
 
     /*구글맵을 멤버변수로 로딩*/
     private void mapLoad() {
-        // SupportMapFragment 는 하위 호환 고려 시 사용, activity_main 의 MapFragment 도 동일한 타입으로 선언
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);      // 매배변수 this: MainActivity 가 OnMapReadyCallback 을 구현하므로

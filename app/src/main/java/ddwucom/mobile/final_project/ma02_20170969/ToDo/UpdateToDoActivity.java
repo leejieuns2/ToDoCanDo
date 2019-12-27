@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ddwucom.mobile.final_project.ma02_20170969.BlogAPI.BlogSearchActivity;
+import ddwucom.mobile.final_project.ma02_20170969.FavPlace.AllFavPlaceActivity;
 import ddwucom.mobile.final_project.ma02_20170969.R;
 
 public class UpdateToDoActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class UpdateToDoActivity extends AppCompatActivity {
     final static String TAG = "UpdateToDoActivity";
     final static int BLOG_LINK_CODE = 100;
     final static int MAP_LINK_CODE = 200;
+    final static int FAV_LINK_CODE = 300;
 
     EditText etTodoDate;
     EditText etTodoTime;
@@ -36,7 +38,7 @@ public class UpdateToDoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update);
+        setContentView(R.layout.activity_update_todo);
 
         etTodoDate = findViewById(R.id.etUpdateDate);
         etTodoTime = findViewById(R.id.etUpdateTime);
@@ -101,6 +103,9 @@ public class UpdateToDoActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, BlogSearchActivity.class);
                 startActivityForResult(intent, BLOG_LINK_CODE);
                 break;
+            case R.id.btnFavActivity:
+                Intent favIntent = new Intent(this, AllFavPlaceActivity.class);
+                startActivityForResult(favIntent, FAV_LINK_CODE);
             case R.id.btnUpdateToDoClose:
                 finish();
                 break;
@@ -122,6 +127,13 @@ public class UpdateToDoActivity extends AppCompatActivity {
                 if(resultCode == RESULT_OK) {
                     String resultData = data.getStringExtra("result_data");
                     Toast.makeText(this, "Search Success !", Toast.LENGTH_SHORT).show();
+                    etLocation.setText(resultData);
+                }
+                break;
+            case FAV_LINK_CODE:
+                if(resultCode == RESULT_OK) {
+                    String resultData = data.getStringExtra("result_data");
+                    Toast.makeText(this, "자주 가는 위치에서 가져왔음 !", Toast.LENGTH_SHORT).show();
                     etLocation.setText(resultData);
                 }
                 break;
